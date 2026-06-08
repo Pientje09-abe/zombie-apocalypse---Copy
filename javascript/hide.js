@@ -1,0 +1,55 @@
+const pages = {
+  home: 'p1',
+  continue: 'p2',
+  new: 'p3',
+  customize: 'p4',
+  credits: 'p5',
+  exitgame: 'p6',
+};
+
+const menuButtons = ['continue', 'new', 'customize', 'credits', 'exitgame'];
+const alignment = ['home']
+function showPage(pageId) {
+  Object.values(pages).forEach(id => {
+    document.getElementById(id)?.classList.add('hide');
+  });
+
+  document.getElementById(pageId)?.classList.remove('hide');
+}
+
+Object.entries(pages).forEach(([buttonId, pageId]) => {
+  document.getElementById(buttonId)?.addEventListener('click', () => {
+
+    showPage(pageId);
+
+    if (buttonId === 'home') {
+      // hide home button
+      document.getElementById('home')?.classList.add('hide');
+
+      // show menu buttons
+      menuButtons.forEach(id => {
+        document.getElementById(id)?.classList.remove('hide');
+      });
+      // align buttons
+      alignment.forEach(id => {
+        const el = document.getElementById('buttons');
+      el?.classList.remove('top');
+      el?.classList.add('center');
+    });
+    } else {
+      // show home button
+      document.getElementById('home')?.classList.remove('hide');
+
+      // hide menu buttons
+      menuButtons.forEach(id => {
+        document.getElementById(id)?.classList.add('hide');
+      });
+      // align buttons
+      alignment.forEach(id => {
+        const el = document.getElementById('buttons');
+      el?.classList.add('top');
+      el?.classList.remove('center');
+    });
+    }
+  });
+});
