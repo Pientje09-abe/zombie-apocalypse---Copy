@@ -7,16 +7,17 @@
   <link rel="stylesheet" href="../css/customize.css">
 </head>
 <body>
+  <div class="customize-menu">
+    <h1 class="title">Customize Your Character</h1>
   <a href="../html/index.html"><button class="back">Back</button></a>
-  
- 
-  <button class="menubutton1"><img class="character-image1" src="../images/mario_caracter_idle_blue_red_loop.gif" alt=""></button>
-  <button class="menubutton2"><img class="character-image2" src="../images/mario_caracter_idle_groen_geel_loop.gif" alt=""></button>
-  <button class="menubutton3"><img class="character-image3" src="../images/mario_caracter_idle_paars_roze_loop.gif" alt=""></button>
-  
-
+  <button class="optionbutton option1" data-character="red-mario"><img class="character-image1" src="../images/mario_caracter_idle_blue_red_loop.gif" alt="">red mario</button>
+  <button class="optionbutton option2" data-character="green-mario"><img class="character-image2" src="../images/mario_caracter_idle_groen_geel_loop.gif" alt="">green mario</button>
+  <button class="optionbutton option3" data-character="purple-mario"><img class="character-image3" src="../images/mario_caracter_idle_paars_roze_loop.gif" alt="">purple mario</button>
+  <p id="result">None selected</p>
+  </div>
 
   
   <script src="../js/hide.js"></script>
+  <script src="../js/save.js"></script>
 </body>
 </html>

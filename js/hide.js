@@ -1,13 +1,13 @@
 const pages = {
-  home: 'p1',
-  continue: 'p2',
-  new: 'p3',
-  customize: 'p4',
-  credits: 'p5',
-  exitgame: 'p6',
+  home: 'home',
+  continue: 'continue',
+  new: 'new',
+  customize: 'customize-menu',
+  credits: 'credits',
+  exitgame: 'exitgame',
 };
 
-const menuButtons = ['continue', 'new', 'customize', 'credits', 'exitgame'];
+const menuButtons = ['play', 'customize', 'credits', 'exitgame'];
 const alignment = ['home']
 function showPage(pageId) {
   Object.values(pages).forEach(id => {

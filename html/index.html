@@ -7,13 +7,24 @@
   <link rel="stylesheet" href="../css/index.css">
 </head>
 <img>
-  <div class="buttons">
-    <a href="play.html"><button class="menubutton play">Play</button></a>
-    <a href="customize.html"><button class="menubutton customize">Customize</button></a>
-    <a href="credits.html"><button class="menubutton credits">Credits</button></a>
-    <a href="link je website"><button class="menubutton exit-game">Exit Game</button></a>
+  <div id="buttons" class="center">
+    <ul>
+      <li><a href="#home"><button id="home" class="menubuttons hide">home</button></a></li>
+      <li><a href="play.html"><button id="play" class="menubuttons play">Play</button></a></li>
+      <li><a href="#customize-menu"><button id="customize" class="menubuttons customize">Customize</button></a></li>
+      <li><a href="credits.html"><button id="credits" class="menubuttons credits">Credits</button></a></li>
+      <li><a href="link je website"><button id="exitgame" class="menubuttons exit-game">Exit Game</button></a></li>
+    </ul>
   </div>
-  <img src="../images/mario_caracter_hit_red_blue.gif" class="mario_red_blue">
+  <div class="customize-menu hide" id="customize-menu">
+    <h1 class="title"></h1>
+  
+  <button class="optionbutton option1" data-character="red-mario"><img class="character-image1" src="../images/mario_caracter_idle_blue_red_loop.gif" alt="">red mario</button>
+  <button class="optionbutton option2" data-character="green-mario"><img class="character-image2" src="../images/mario_caracter_idle_groen_geel_loop.gif" alt="">green mario</button>
+  <button class="optionbutton option3" data-character="purple-mario"><img class="character-image3" src="../images/mario_caracter_idle_paars_roze_loop.gif" alt="">purple mario</button>
+  <p id="result">None selected</p>
+  </div>
   <script src="../js/hide.js"></script>
+  <script src="../js/save.js"></script>
 </body>
 </html>
