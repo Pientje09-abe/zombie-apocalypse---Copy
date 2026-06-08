@@ -1,0 +1,39 @@
+body{
+  background: linear-gradient(to right, black, rgb(0, 60, 0));
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-Y: hidden;
+}
+.buttons{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+}
+.menubutton {
+  background-color: transparent;
+  color: white;
+  border: 0.2vw solid white;
+  padding: 1vw 2vw;
+  margin: 10px;
+  font-size: 2vw;
+  cursor: pointer;
+  border-radius: 1em;
+  align-items: center;
+  width: 15vw;
+  height: auto;
+  text-shadow: 0 0 5px rgb(175, 175, 175);
+}
+.mario_red_blue{
+  height: auto;
+  width: 40vw;
+  left: 60%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+           
