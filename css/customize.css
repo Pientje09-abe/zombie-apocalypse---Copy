@@ -11,8 +11,8 @@
   border-radius: 1em;
   align-items: center;
   width: 15vw; 
-  top: 7vh;
-  left: 8vw;
+  top: 80vh;
+  left: 50vw;
   position: absolute;
   transform: translate(-50%, -50%);
   text-shadow: 0 0 5px rgb(175, 175, 175);
@@ -77,7 +77,7 @@
   cursor: pointer;
   border-radius: 1em;
   top: 50vh;
-  left: 80vw;
+  left: 70vw;
   position: absolute;
   transform: translate(-50%, -50%);
   align-items: center;
@@ -102,7 +102,7 @@
   cursor: pointer;
   border-radius: 1em;
   top: 50vh;
-  left: 20vw;
+  left: 30vw;
   position: absolute;
   transform: translate(-50%, -50%);
   align-items: center;
