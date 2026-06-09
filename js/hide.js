@@ -3,7 +3,7 @@ const pages = {
   continue: 'continue',
   new: 'new',
   customize: 'customize-menu',
-  credits: 'credits',
+  credits: 'credits-menu',
   exitgame: 'exitgame',
 };
 

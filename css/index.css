@@ -1,3 +1,4 @@
+/*general elements*/
 body{
   background: linear-gradient(to right, black, rgb(0, 60, 0));
   margin: 0;
@@ -5,6 +6,32 @@ body{
   width: 100%;
   overflow-Y: hidden;
 }
+.back{
+  background-color: transparent;
+  color: white;
+  border: 0.2vw solid white;
+  padding: 1vw 2vw;
+  font-size: 2vw;
+  cursor: pointer;
+  border-radius: 1em;
+  align-items: center;
+  width: 15vw; 
+  top: 7vh;
+  left: 8vw;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 5px rgb(175, 175, 175);
+}
+.title {
+  font-size: 10vw;
+  text-shadow: 0 0 5px rgb(175, 175, 175); 
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center; 
+  margin: 5vh 0 0;
+}
+/*home menu*/
 #buttons{
   display: flex;
   flex-direction: column;
@@ -26,40 +53,8 @@ body{
   height: auto;
   text-shadow: 0 0 5px rgb(175, 175, 175);
 }
-.mario_red_blue{
-  height: auto;
-  width: 40vw;
-  left: 60%;
-  top: 40%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
-.hide {
-  display: none;
-}
-.back{
-  background-color: transparent;
-  color: white;
-  border: 0.2vw solid white;
-  padding: 1vw 2vw;
-  font-size: 2vw;
-  cursor: pointer;
-  border-radius: 1em;
-  align-items: center;
-  width: 15vw; 
-  top: 7vh;
-  left: 8vw;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  text-shadow: 0 0 5px rgb(175, 175, 175);
-}
-.butons_selection {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; 
-}
-:hover.option1, :hover.option2, :hover.option3{
+/*customization menu*/
+.option1:hover, .option2:hover, .option3:hover{
   background-color: white;
   border: 0.2vw solid white;
   padding: 1vw 2vw;
@@ -78,7 +73,22 @@ body{
   position: absolute;
   transform: translate(-50%, -50%);
 }
-
+.character-image2 {
+  width: 10vw;
+  height: auto;
+  top: 20vh;
+  left: 8vw;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.character-image3 {
+  width: 10vw;
+  height: auto;
+  top: 20vh;
+  left: 8vw;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
 .option1{
   background-color: transparent;
   color: transparent;
@@ -95,15 +105,6 @@ body{
   height: 40vh;
   width: 15vw;
 }
-.character-image2 {
-  width: 10vw;
-  height: auto;
-  top: 20vh;
-  left: 8vw;
-  position: absolute;
-  transform: translate(-50%, -50%);
-}
-
 .option2{
   background-color: transparent;
   color: transparent;
@@ -120,15 +121,6 @@ body{
   height: 40vh;
   width: 15vw;
 }
-.character-image3 {
-  width: 10vw;
-  height: auto;
-  top: 20vh;
-  left: 8vw;
-  position: absolute;
-  transform: translate(-50%, -50%);
-}
-
 .option3{
   background-color: transparent;
   color: transparent;
@@ -145,12 +137,7 @@ body{
   height: 40vh;
   width: 15vw;
 }
-.top {
-  margin-top: 10vh;
-}
-.center {
-  margin-top: 50vh;
-}
+
 #result {
   position: absolute;
   top: 90vh;
@@ -159,4 +146,25 @@ body{
   font-size: 4vw;
   color: white;
   text-shadow: 0 0 5px rgb(175, 175, 175);
+}
+/*credits menu*/
+
+.text{
+  font-size: 2vw;
+  text-shadow: 0 0 5px rgb(100, 100, 100); 
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center; 
+  margin: 5vh 0 0;
+}
+/*extra*/
+.hide {
+  display: none;
+}
+.top {
+  margin-top: 10vh;
+}
+.center {
+  margin-top: 50vh;
 }
