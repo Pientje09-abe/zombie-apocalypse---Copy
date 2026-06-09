@@ -29,7 +29,7 @@ body{
 }
 .mario_red_blue{
   height: auto;
-  width: 40vw;
+  width: 10vw;
   left: 60%;
   top: 40%;
   transform: translate(-50%, -50%);
