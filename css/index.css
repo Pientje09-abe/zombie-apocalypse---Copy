@@ -36,9 +36,15 @@ body{
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 10%;
   transform: translate(-50%, -50%);
-  width: 350px;
+  width: auto;
+}
+#buttons ul {
+  list-style-type: none;
+  padding: 0;
+}
+#buttons li {
+  list-style-type: none;
 }
 .menubuttons {
   background-color: transparent;
@@ -131,12 +137,14 @@ body{
   display: none;
 }
 .top {
+  margin-left: 10vw;
   margin-top: 10vh;
 }
 .middle {
+  margin-left: 50vw;
   margin-top: 90vh;
-  margin-left: calc(50vw - 175px);
 }
 .center {
+  margin-left: 10vw;
   margin-top: 50vh;
 }
