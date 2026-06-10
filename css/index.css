@@ -1,10 +1,11 @@
 /*general elements*/
 body{
-  background: linear-gradient(to right, black, rgb(0, 60, 0));
+  background: linear-gradient(to bottom, rgb(0, 100, 255), rgb(0, 0, 255));
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-Y: hidden;
+  mask-repeat: no-repeat;
 }
 .back{
   background-color: transparent;
@@ -40,6 +41,10 @@ body{
   transform: translate(-50%, -50%);
   width: 350px;
 }
+#buttons li{
+  list-style-type: none;
+}
+
 .menubuttons {
   background-color: transparent;
   color: white;
@@ -135,7 +140,7 @@ body{
 }
 .middle {
   margin-top: 90vh;
-  margin-left: calc(50vw - 175px);
+  margin-left: 40vw;
 }
 .center {
   margin-top: 50vh;
