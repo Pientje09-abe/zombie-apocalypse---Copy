@@ -1,7 +1,6 @@
 const pages = {
   back: 'back',
-  continue: 'continue',
-  new: 'new',
+  play: 'play-menu',
   customize: 'customize-menu',
   credits: 'credits-menu',
   exitgame: 'exitgame',
@@ -36,6 +35,8 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
       el?.classList.remove('top');
       el?.classList.remove('middle');
       el?.classList.add('center');
+      // change title        
+      document.getElementById("main-title").innerHTML = "home";
     });
     } else {
       if (buttonId === 'credits') {
@@ -52,6 +53,8 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
         const el = document.getElementById('buttons');
       el?.classList.remove('center');
       el?.classList.add('middle');
+      // change title        
+      document.getElementById("main-title").innerHTML = "credits";
     });
     } else {
       // show back button
@@ -67,6 +70,16 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
       el?.classList.add('top');
       el?.classList.remove('center');
       el?.classList.remove('middle');
+      if (buttonId === 'play') {
+        // change title        
+      document.getElementById("main-title").innerHTML = "play";
+      }
+      else {
+        if (buttonId === 'customize') {
+          // change title        
+        document.getElementById("main-title").innerHTML = "Customize your character!";
+        }
+      }
     });
     }
     }
