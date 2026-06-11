@@ -37,6 +37,11 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
       el?.classList.add('center');
       // change title        
       document.getElementById("main-title").innerHTML = "home";
+      const background = document.getElementById('background');
+      background?.classList.remove('background-play');
+      background?.classList.remove('background-credits');
+      background?.classList.remove('background-customize');
+      background?.classList.add('background-home');
     });
     } else {
       if (buttonId === 'credits') {
