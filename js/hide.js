@@ -37,6 +37,7 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
       el?.classList.add('center');
       // change title        
       document.getElementById("main-title").innerHTML = "home";
+      // change background
       const background = document.getElementById('background');
       background?.classList.remove('background-play');
       background?.classList.remove('background-credits');
@@ -60,8 +61,13 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
       el?.classList.add('middle');
       // change title        
       document.getElementById("main-title").innerHTML = "credits";
+      // change background
+      const background = document.getElementById('background');
+      background?.classList.remove('background-home');
+      background?.classList.add('background-credits');
     });
     } else {
+      // play page
       // show back button
       document.getElementById('back')?.classList.remove('hide');
 
@@ -75,14 +81,23 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
       el?.classList.add('top');
       el?.classList.remove('center');
       el?.classList.remove('middle');
+      
       if (buttonId === 'play') {
         // change title        
       document.getElementById("main-title").innerHTML = "play";
+      // change background
+      const background = document.getElementById('background');
+      background?.classList.remove('background-home');
+      background?.classList.add('background-play');
       }
       else {
         if (buttonId === 'customize') {
           // change title        
         document.getElementById("main-title").innerHTML = "Customize your character!";
+        // change background
+        const background = document.getElementById('background');
+        background?.classList.remove('background-home');
+        background?.classList.add('background-customize');
         }
       }
     });
