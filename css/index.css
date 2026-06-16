@@ -79,6 +79,7 @@ body{
   position: absolute;
   transform: translate(-50%, -50%);
   width: auto;
+  top: 0;
 }
 #buttons ul {
   list-style-type: none;
@@ -184,6 +185,7 @@ body{
   margin-left: 8vw;
   margin-top: 10.5vh;
   transform: translate(-50%, -50%);
+
     
 }
 .middle {
