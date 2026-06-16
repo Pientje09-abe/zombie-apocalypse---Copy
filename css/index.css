@@ -181,8 +181,10 @@ body{
   display: none;
 }
 .top {
-  margin-left: 10vw;
-  margin-top: 10vh;
+  margin-left: 8vw;
+  margin-top: 10.5vh;
+  transform: translate(-50%, -50%);
+    
 }
 .middle {
   margin-left: 50vw;
