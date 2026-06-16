@@ -1,0 +1,1 @@
+het ging goed we begonen alleen tevroeg met javascript waardoor we het eerst nog zonder javascript moesten gaan herprogrammeren

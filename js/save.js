@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
             result.textContent = character;
 
             console.log("Saved:", character);
-
+            
         });
 
     });
