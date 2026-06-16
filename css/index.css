@@ -7,7 +7,6 @@ body{
   overflow-Y: hidden;
   background-repeat: no-repeat;
   height: 100vh;
-  overflow: hidden;
 }
 .back{
   background-color: transparent;
@@ -34,6 +33,45 @@ body{
   align-items: center; 
   margin: 5vh 0 0;
 }
+/*background image*/
+.background-home {
+  background: linear-gradient(to top, rgb(170, 255, 0), rgb(0, 0, 255));
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-Y: hidden;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.background-play {
+  background-image: url('../images/background_mario - kopie.png');
+  background-size: cover;
+  background-position-y: bottom;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-Y: hidden;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.background-customize {
+  background: linear-gradient(to top, rgb(170, 255, 0), rgb(0, 0, 255));
+  margin-top: -5vh;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.background-credits {
+  background: linear-gradient(to top, rgb(170, 255, 0), rgb(0, 0, 255));
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-Y: hidden;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
 /*home menu*/
 #buttons{
   display: flex;
@@ -49,30 +87,33 @@ body{
 #buttons li {
   list-style-type: none;
 }
+#buttons a {
+  text-decoration: none;
+  height: auto;
+  display: block;
+}
 .menubuttons {
   background-color: transparent;
   color: white;
   border: 0.2vw solid white;
-  padding: 1vw 2vw;
   margin: 10px;
   font-size: 2vw;
   cursor: pointer;
   border-radius: 1em;
   align-items: center;
   width: 15vw;
-  height: auto;
+  height: 4.3vw;
   text-shadow: 0 0 5px rgb(175, 175, 175);
+  position: relative;
 }
+/*play menu*/
 /*customization menu*/
-.customize-menu {
-  margin-top: 11.5vh;
-}
 #character-options {
   display: flex;
   justify-content:space-around;
   list-style-type:none;
   align-items: center;
-  margin-top: 4vh;
+  margin-top: 20vh;
 }
 #character-options li {
   display: inline;
@@ -90,7 +131,7 @@ body{
 .optionbutton img {
   display: block;
   max-width: 100%;
-  height: auto;
+  height: 25vh;
   margin: 1vw auto 0;
 }
 .option1:hover, .option2:hover, .option3:hover{
@@ -118,7 +159,7 @@ body{
 }
 #result {
   position: absolute;
-  top: 90vh;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 4vw;
