@@ -7,6 +7,7 @@ body{
   overflow-Y: hidden;
   background-repeat: no-repeat;
   height: 100vh;
+  overflow: hidden;
 }
 .back{
   background-color: transparent;
@@ -150,3 +151,15 @@ body{
   margin-left: 10vw;
   margin-top: 50vh;
 }
+.background{
+  background-image: url("../images/background_mario.png");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 105vh;
+  background-repeat: no-repeat;
+  overflow: none;
+  margin-top: -5vh;
+  padding: 0;
+}
+
