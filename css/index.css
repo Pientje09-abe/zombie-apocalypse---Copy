@@ -225,4 +225,15 @@ body{
   margin-left: 10vw;
   margin-top: 50vh;
 }
-
+#timing-button{
+  border: 0.2vw solid black;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+}
+.timing-button-red{
+  background-color: red;
+}
+.timing-button-green{
+  background-color: green;
+}
