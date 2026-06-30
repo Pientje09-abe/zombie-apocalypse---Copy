@@ -191,10 +191,8 @@ body{
 }
 .top {
   margin-left: 8vw;
-  margin-top: 10.5vh;
-  transform: translate(-50%, -50%);
-
-    
+  margin-top: 5.6vh;
+  transform: translate(-50%, -50%); 
 }
 .middle {
   margin-left: 50vw;
@@ -204,15 +202,15 @@ body{
   margin-left: 10vw;
   margin-top: 50vh;
 }
-.background{
-  background-image: url("../images/background_mario.png");
-  background-size: cover;
-  background-position: center;
-  width: 100vw;
-  height: 105vh;
-  background-repeat: no-repeat;
-  overflow: none;
-  margin-top: -5vh;
-  padding: 0;
+#timing-button{
+  border: 0.2vw solid black;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
 }
-
+.timing-button-red{
+  background-color: red;
+}
+.timing-button-green{
+  background-color: green;
+}
