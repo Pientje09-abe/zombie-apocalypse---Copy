@@ -108,6 +108,14 @@ body{
   position: relative;
 }
 /*play menu*/
+.play-image {
+  position: absolute;
+  display: block;
+  max-width: 100%;
+  height: 25vh;
+  bottom: 7vh;
+  left: 2vw;
+}
 /*customization menu*/
 #character-options {
   display: flex;

@@ -7,20 +7,20 @@
   <link rel="stylesheet" href="../../css/index.css">
 </head>
 
-<body id="background" class="background-home">
-  <div id="buttons" class="center">
+<body id="background" class="background-customize">
+  <div id="buttons" class="top">
     <ul>
-      <li><a href="#home"><button id="back" class="menubuttons hide">back</button></a></li>
-      <li><a href="#play"><button id="play" class="menubuttons play">Play</button></a></li>
-      <li><a href="#customize-menu"><button id="customize" class="menubuttons customize">Customize</button></a></li>
-      <li><a href="#credits-menu"><button id="credits" class="menubuttons credits">Credits</button></a></li>
-      <li><a href="link to your site"><button id="exitgame" class="menubuttons exit-game">Exit Game</button></a></li>
+      <li><a href="index.html"><button id="back" class="menubuttons">back</button></a></li>
+      <li><a href="play.html"><button id="play" class="menubuttons play hide">Play</button></a></li>
+      <li><a href="customize.html"><button id="customize" class="menubuttons customize hide">Customize</button></a></li>
+      <li><a href="credits.html"><button id="credits" class="menubuttons credits hide">Credits</button></a></li>
+      <li><a href="link to your site"><button id="exitgame" class="menubuttons exit-game hide">Exit Game</button></a></li>
     </ul>
   </div>
-  <div class="play-menu">
+  <div class="play-menu hide">
     <h1 class="title hide">Play Menu</h1>
   </div>
-  <div class="customize-menu hide" id="customize-menu">
+  <div class="customize-menu" id="customize-menu">
   <h1 class="title"></h1>
   <ul id="character-options">
     <li><button class="optionbutton options" data-character="red-mario"><img class="character-image1" src="../../images/mario_character_idle_blue_red_loop.gif" alt="">red mario</button></li>
@@ -33,7 +33,6 @@
   <div class="credits-menu hide" id="credits-menu">
     <h1 class="title">Credits Menu</h1>
     <h2 class="text"><br>Pientje09<br><br>Rubyfire</h2>
-  <script src="../../js/hide.js"></script>
-  <script src="../../js/save.js"></script>
+  </div>
 </body>
 </html>
