@@ -165,7 +165,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (x >= 9) {
       timingButton.classList.remove("timing-button-red");
       timingButton.classList.add("timing-button-green");
+      timingButton.classList.remove("timing-button-red");
+      timingButton.classList.add("timing-button-green");
 
+      setTimeout(() => {
+        timingButton.classList.remove("timing-button-green");
+        timingButton.classList.add("timing-button-red");
+
+        enemyRightVw = Math.max(2, enemyRightVw + 3);
+        updateEnemyPosition();
+
+        score = Math.max(0, score + 1);
+        scoreDisplay.textContent = score;
+      }, 750);
       setTimeout(() => {
         timingButton.classList.remove("timing-button-green");
         timingButton.classList.add("timing-button-red");
@@ -178,12 +190,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 750);
     }
   }, 1000);
+  }, 1000);
 
   timingButton.addEventListener("click", () => {
     if (timingButton.classList.contains("timing-button-green") && enemyImage) {
       timingButton.classList.remove("timing-button-green");
       timingButton.classList.add("timing-button-red");
+  timingButton.addEventListener("click", () => {
+    if (timingButton.classList.contains("timing-button-green") && enemyImage) {
+      timingButton.classList.remove("timing-button-green");
+      timingButton.classList.add("timing-button-red");
 
+      enemyRightVw = Math.max(3, enemyRightVw - 3);
+      updateEnemyPosition();
       enemyRightVw = Math.max(3, enemyRightVw - 3);
       updateEnemyPosition();
 
@@ -192,7 +211,16 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       enemyRightVw += 3;
       updateEnemyPosition();
+      score += 1;
+      scoreDisplay.textContent = score;
+    } else {
+      enemyRightVw += 3;
+      updateEnemyPosition();
 
+      score = Math.max(0, score - 1);
+      scoreDisplay.textContent = score;
+    }
+  })
       score = Math.max(0, score - 1);
       scoreDisplay.textContent = score;
     }
