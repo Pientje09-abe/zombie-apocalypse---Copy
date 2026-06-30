@@ -26,10 +26,10 @@
       <img class="play-image hide" data-character="green-trooper" src="../images/Idle_trooper_east.gif" alt="Play Image">
     </div>
     <div class="timing-buttons">
-      <button id="timing-button" class="timing-button-red"></button>
+      <button id="timing-button" class="timing-button-red" onclick="document.getElementById('demo').innerHTML = getRndInteger(1,10)"></button>
     </div>
     <div id="enemy">
-      <img class="enemy-image" data-character="green-trooper-enemy" src="../images/Idle_trooper_west.gif" alt="enemy Image">
+      <img class="enemy-image" data-character="enemy" src="../images/Idle_trooper_west.gif" alt="enemy Image">
     </div>
   </div>
   <div class="customize-menu hide" id="customize-menu">

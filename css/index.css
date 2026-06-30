@@ -129,6 +129,9 @@ body{
   width: 5vw;
   height: 5vw;
   border-radius: 50%;
+  top: 50%;
+  right: 50%;
+  position: absolute;
 }
 .timing-button-red{
   background-color: red;
