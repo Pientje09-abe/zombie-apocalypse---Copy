@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const result = document.getElementById("result");
     const buttons = document.querySelectorAll(".optionbutton");
     const playImages = document.querySelectorAll(".play-image");
-
     const savedCharacter = localStorage.getItem("character");
 
     if (savedCharacter) {
