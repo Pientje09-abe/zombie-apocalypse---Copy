@@ -15,6 +15,8 @@ setInterval(() => {
 }, 250);
 document.getElementById("timing-button").addEventListener("click", () => {
   if (timingButton.classList.contains("timing-button-green")) {
+    timingButton.classList.remove("timing-button-green");
+    timingButton.classList.add("timing-button-red");
     addScore(1) ;
   }
 });

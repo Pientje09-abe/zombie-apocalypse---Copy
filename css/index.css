@@ -1,6 +1,5 @@
 /*general elements*/
 body{
-  background: linear-gradient(to top, rgb(170, 255, 0), rgb(0, 0, 255));
   margin: 0;
   padding: 0;
   width: 100%;
@@ -33,9 +32,8 @@ body{
   align-items: center; 
   margin: 5vh 0 0;
 }
-/*background image*/
 .background-home {
-  background: linear-gradient(to top, rgb(170, 255, 0), rgb(0, 0, 255));
+  background: linear-gradient(to bottom, #0073FD, #1F94FD, #4CBDFB, #7EE7F7);
   margin: 0;
   padding: 0;
   width: 100%;
@@ -227,6 +225,11 @@ body{
   width: 5vw;
   height: 5vw;
   border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 .timing-button-red{
   background-color: red;
