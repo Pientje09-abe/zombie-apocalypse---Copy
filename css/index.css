@@ -114,19 +114,22 @@ body{
   bottom: 7vh;
   left: 2vw;
 }
-.enemy-image {
+#enemy-image {
   position: absolute;
   display: block;
   max-width: 100%;
   height: 25vh;
   bottom: 7vh;
-  right: 2vw;
+  right: 3vw;
 }
 #timing-button{
   border: 0.2vw solid black;
   width: 5vw;
   height: 5vw;
   border-radius: 50%;
+  top: 50%;
+  right: 50%;
+  position: absolute;
 }
 .timing-button-red{
   background-color: red;
