@@ -1,0 +1,27 @@
+.background-died {
+  background: linear-gradient(to right, #363636, #555555, #363636);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-Y: hidden;
+  background-repeat: no-repeat;
+  height: 100vh;
+  opacity: 0.5;
+}
+#play-again {
+top: 60%;
+left: 50%;
+}
+#menu {
+top: 70%; 
+left: 50%;
+}
+.you-died {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10vw;
+  color: rgb(255, 0, 0);
+  text-shadow: 0 0 10px rgb(192, 0, 0);
+}
