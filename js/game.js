@@ -160,7 +160,7 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
 
     enemyImage.style.right = `${enemyRightVw}vw`;
 
-    if (enemyRightVw >= 75) { alert ("You died!");
+    if (enemyRightVw >= 75) {
       document.getElementById("you-died").innerHTML = "You died!";
       const background = document.getElementById("background");
       background?.classList.remove("background-home");
@@ -169,22 +169,25 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
   }
 
   setInterval(() => {
-    const x = Math.floor(Math.random() * 9) + 1;
+    const x = Math.floor(Math.random() * 4) + 1;
 
-    if (x >= 9) {
+    if (x >= 4) {
       timingButton?.classList.remove("timing-button-red");
-      timingButton?.classList.add("timing-button-green");
+      timingButton?.classList.add("timing-button-orange");
 
-      setTimeout(() => {
-        timingButton?.classList.remove("timing-button-green");
-        timingButton?.classList.add("timing-button-red");
+      setTimeout(function () {
+        timingButton?.classList.remove("timing-button-orange");
+        timingButton?.classList.add("timing-button-green");
+      }, 400);
 
-        enemyRightVw = Math.max(2, enemyRightVw + 3);
-        updateEnemyPosition();
-
-        score = Math.max(0, score - 1);
-        if (scoreDisplay) scoreDisplay.textContent = score;
-      }, 750);
+      setTimeout(function () {
+        if (timingButton?.classList.contains("timing-button-green")) {
+          timingButton?.classList.remove("timing-button-green");
+          timingButton?.classList.add("timing-button-red");
+          enemyRightVw = Math.max(2, enemyRightVw + 3);
+          updateEnemyPosition();
+        }        
+      }, 700);
     }
   }, 1000);
 
@@ -202,6 +205,5 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
       enemyRightVw += 3;
       updateEnemyPosition();
 
-      score = Math.max(0, score - 1);
-      if (scoreDisplay) scoreDisplay.textContent = score;
+      
   }})});
