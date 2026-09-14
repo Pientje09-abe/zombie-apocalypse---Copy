@@ -1,4 +1,4 @@
-// Prevent text selection and image dragging
+
 document.addEventListener('selectstart', function (e) {
   e.preventDefault();
 });
@@ -6,9 +6,7 @@ document.addEventListener('selectstart', function (e) {
 document.addEventListener('dragstart', function (e) {
   e.preventDefault();
 });
-//-----------------
-//THE PAGE SELECTOR
-//-----------------
+
 const pages = {
   back: 'back',
   play: 'play-menu',

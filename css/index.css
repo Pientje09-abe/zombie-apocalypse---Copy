@@ -53,7 +53,7 @@ body{
   height: 100vh;
 }
 .background-customize {
-  background: linear-gradient(to top, rgb(170, 255, 0), rgb(0, 0, 255));
+  background: linear-gradient(to bottom, #0073FD, #1F94FD, #4CBDFB, #7EE7F7);
   margin-top: -5vh;
   padding: 0;
   width: 100%;
@@ -62,7 +62,7 @@ body{
   height: 100vh;
 }
 .background-credits {
-  background: linear-gradient(to top, rgb(170, 255, 0), rgb(0, 0, 255));
+  background: linear-gradient(to bottom, #0073FD, #1F94FD, #4CBDFB, #7EE7F7);
   margin: 0;
   padding: 0;
   width: 100%;
