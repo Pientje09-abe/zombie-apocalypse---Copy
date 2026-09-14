@@ -169,22 +169,20 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
   }
 
   setInterval(() => {
-    const x = Math.floor(Math.random() * 9) + 1;
+    const x = Math.floor(Math.random() * 4) + 1;
 
-    if (x >= 9) {
+    if (x >= 4) {
       timingButton?.classList.remove("timing-button-red");
       timingButton?.classList.add("timing-button-green");
 
-      setTimeout(() => {
-        timingButton?.classList.remove("timing-button-green");
-        timingButton?.classList.add("timing-button-red");
-
-        enemyRightVw = Math.max(2, enemyRightVw + 3);
-        updateEnemyPosition();
-
-        score = Math.max(0, score - 1);
-        if (scoreDisplay) scoreDisplay.textContent = score;
-      }, 750);
+      setTimeout(function () {
+        if (timingButton?.classList.contains("timing-button-green")) {
+          timingButton?.classList.remove("timing-button-green");
+          timingButton?.classList.add("timing-button-red");
+          enemyRightVw = Math.max(2, enemyRightVw + 3);
+          updateEnemyPosition();
+        }        
+    }, 750);
     }
   }, 1000);
 
@@ -202,6 +200,5 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
       enemyRightVw += 3;
       updateEnemyPosition();
 
-      score = Math.max(0, score - 1);
-      if (scoreDisplay) scoreDisplay.textContent = score;
+      
   }})});
