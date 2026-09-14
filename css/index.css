@@ -31,6 +31,7 @@ body{
   color: white;
   align-items: center; 
   margin: 5vh 0 0;
+  cursor: default;
 }
 .background-home {
   background: linear-gradient(to bottom, #0073FD, #1F94FD, #4CBDFB, #7EE7F7);
@@ -140,6 +141,16 @@ body{
 .timing-button-green{
   background-color: green;
 }
+#Scoreboard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1vw;
+  font-size: 2vw;
+  color: white;
+  text-shadow: 0 0 5px rgb(175, 175, 175);
+  cursor: default;
+}
 /*customization menu*/
 #character-options {
   display: flex;
@@ -198,6 +209,7 @@ body{
   font-size: 4vw;
   color: white;
   text-shadow: 0 0 5px rgb(175, 175, 175);
+  cursor: default;
 }
 /*credits menu*/
 .text{
@@ -208,6 +220,7 @@ body{
   color: white;
   align-items: center; 
   margin: 5vh 0 0;
+  cursor: default;
 }
 /*extra*/
 .hide {

@@ -1,4 +1,4 @@
-
+//prevent drawing and selecting text on the page
 document.addEventListener('selectstart', function (e) {
   e.preventDefault();
 });
@@ -13,6 +13,7 @@ const pages = {
   customize: 'customize-menu',
   credits: 'credits-menu',
   exitgame: 'exitgame',
+  youdied: 'you-died',
 };
 
 const menuButtons = ['play', 'customize', 'credits', 'exitgame'];
@@ -48,6 +49,7 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
         document.getElementById("main-title").innerHTML = "home";
         // change background
         const background = document.getElementById('background');
+        background?.classList.remove('background-died');
         background?.classList.remove('background-play');
         background?.classList.remove('background-credits');
         background?.classList.remove('background-customize');
@@ -149,61 +151,86 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
         });
     }
   const timingButton = document.getElementById("timing-button");
+  const playButton = document.getElementById("play");
   const enemyImage = document.getElementById("enemy-image");
   const scoreDisplay = document.getElementById("Score");
-
+  let difficulty = localStorage.getItem("difficulty") || "easy";
   let score = 0;
   let enemyRightVw = 2;
+  let gameStarted = false;
+  let gameInterval;
 
   function updateEnemyPosition() {
     if (!enemyImage) return;
 
     enemyImage.style.right = `${enemyRightVw}vw`;
 
-    if (enemyRightVw >= 75) {
+    if (enemyRightVw > 75) {
       document.getElementById("you-died").innerHTML = "You died!";
       const background = document.getElementById("background");
-      background?.classList.remove("background-home");
       background?.classList.add("background-died");
+      gameStarted = false;
+      clearInterval(gameInterval);
+      gameInterval = undefined;
     }
   }
 
-  setInterval(() => {
-    const x = Math.floor(Math.random() * 4) + 1;
+  function startGame() {
+    if (gameStarted) return;
 
-    if (x >= 4) {
-      timingButton?.classList.remove("timing-button-red");
-      timingButton?.classList.add("timing-button-orange");
+    gameStarted = true;
 
-      setTimeout(function () {
-        timingButton?.classList.remove("timing-button-orange");
-        timingButton?.classList.add("timing-button-green");
-      }, 400);
+    if (difficulty === "easy") {
+      gameInterval = setInterval(() => {
+        if (!gameStarted) return;
 
-      setTimeout(function () {
-        if (timingButton?.classList.contains("timing-button-green")) {
-          timingButton?.classList.remove("timing-button-green");
-          timingButton?.classList.add("timing-button-red");
-          enemyRightVw = Math.max(2, enemyRightVw + 3);
+        const x = Math.floor(Math.random() * 4) + 1;
+
+        if (x >= 4) {
+          timingButton?.classList.remove("timing-button-red");
+          timingButton?.classList.add("timing-button-orange");
+
+          setTimeout(function () {
+            if (!gameStarted) return;
+
+            timingButton?.classList.remove("timing-button-orange");
+            timingButton?.classList.add("timing-button-green");
+          }, 400);
+
+          setTimeout(function () {
+            if (gameStarted && timingButton?.classList.contains("timing-button-green")) {
+              timingButton?.classList.remove("timing-button-green");
+              timingButton?.classList.add("timing-button-red");
+              enemyRightVw = Math.max(2, enemyRightVw + 3);
+              updateEnemyPosition();
+            }
+          }, 700);
+        }
+      }, 1000);
+
+      timingButton?.addEventListener("click", () => {
+        if (!gameStarted) return;
+
+        if (timingButton?.classList.contains("timing-button-green") && enemyImage) {
+          timingButton.classList.remove("timing-button-green");
+          timingButton.classList.add("timing-button-red");
+
+          enemyRightVw = Math.max(2, enemyRightVw - 3);
           updateEnemyPosition();
-        }        
-      }, 700);
+
+          score += 1;
+          if (scoreDisplay) scoreDisplay.textContent = score;
+        } else {
+          enemyRightVw += 3;
+          updateEnemyPosition();
+        }
+      });
     }
-  }, 1000);
+  }
 
-  timingButton?.addEventListener("click", () => {
-    if (timingButton?.classList.contains("timing-button-green") && enemyImage) {
-      timingButton.classList.remove("timing-button-green");
-      timingButton.classList.add("timing-button-red");
-
-      enemyRightVw = Math.max(2, enemyRightVw - 3);
-      updateEnemyPosition();
-
-      score += 1;
-      if (scoreDisplay) scoreDisplay.textContent = score;
-    } else {
-      enemyRightVw += 3;
-      updateEnemyPosition();
-
-      
-  }})});
+  playButton?.addEventListener("click", () => {
+    enemyRightVw = 2;
+    updateEnemyPosition();
+    startGame();
+  });
+});
