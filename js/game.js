@@ -160,7 +160,7 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
 
     enemyImage.style.right = `${enemyRightVw}vw`;
 
-    if (enemyRightVw >= 75) { alert ("You died!");
+    if (enemyRightVw >= 75) {
       document.getElementById("you-died").innerHTML = "You died!";
       const background = document.getElementById("background");
       background?.classList.remove("background-home");
@@ -173,7 +173,12 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
 
     if (x >= 4) {
       timingButton?.classList.remove("timing-button-red");
-      timingButton?.classList.add("timing-button-green");
+      timingButton?.classList.add("timing-button-orange");
+
+      setTimeout(function () {
+        timingButton?.classList.remove("timing-button-orange");
+        timingButton?.classList.add("timing-button-green");
+      }, 400);
 
       setTimeout(function () {
         if (timingButton?.classList.contains("timing-button-green")) {
@@ -182,7 +187,7 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
           enemyRightVw = Math.max(2, enemyRightVw + 3);
           updateEnemyPosition();
         }        
-    }, 750);
+      }, 700);
     }
   }, 1000);
 
