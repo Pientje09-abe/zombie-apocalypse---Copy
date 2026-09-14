@@ -92,7 +92,7 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
           el?.classList.add('top');
           el?.classList.remove('center');
           el?.classList.remove('middle');
-
+        
           if (buttonId === 'play') {
             // change title        
             document.getElementById("main-title").innerHTML = "play";
@@ -110,17 +110,17 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
               background?.classList.remove('background-home');
               background?.classList.add('background-customize');
             }
-          }
-        });
+        }});
       }
     }
   });
 });
-document.addEventListener("DOMContentLoaded", function () {
-  const result = document.getElementById("result");
-    const buttons = document.querySelectorAll(".optionbutton");
-    const playImages = document.querySelectorAll(".play-image");
-    const savedCharacter = localStorage.getItem("character");
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const result = document.getElementById("result");
+      const buttons = document.querySelectorAll(".optionbutton");
+      const playImages = document.querySelectorAll(".play-image");
+      const savedCharacter = localStorage.getItem("character");
 
     if (savedCharacter) {
         updateCharacter(savedCharacter);
@@ -150,56 +150,60 @@ document.addEventListener("DOMContentLoaded", function () {
             image.classList.toggle("hide", !isSelected);
         });
     }
-const timingButton = document.getElementById("timing-button");
-const enemyImage = document.getElementById("enemy-image");
-const scoreDisplay = document.getElementById("Score");
+  const timingButton = document.getElementById("timing-button");
+  const enemyImage = document.getElementById("enemy-image");
+  const scoreDisplay = document.getElementById("Score");
 
-let score = 0;
-let enemyRightVw = 2;
+  let score = 0;
+  let enemyRightVw = 2;
 
-function updateEnemyPosition() {
-  enemyImage.style.right = `${enemyRightVw}vw`;
+  function updateEnemyPosition() {
+    if (!enemyImage) return;
 
-  if (enemyRightVw >= 75) {
-    alert("you died");
+    enemyImage.style.right = `${enemyRightVw}vw`;
+
+    if (enemyRightVw >= 75) { alert ("You died!");
+      document.getElementById("you-died").innerHTML = "You died!";
+      const background = document.getElementById("background");
+      background?.classList.remove("background-home");
+      background?.classList.add("background-died");
+    }
   }
-}
 
-setInterval(() => {
-  const x = Math.floor(Math.random() * 9) + 1;
+  setInterval(() => {
+    const x = Math.floor(Math.random() * 9) + 1;
 
-  if (x >= 9) {
-    timingButton.classList.remove("timing-button-red");
-    timingButton.classList.add("timing-button-green");
+    if (x >= 9) {
+      timingButton?.classList.remove("timing-button-red");
+      timingButton?.classList.add("timing-button-green");
 
-    setTimeout(() => {
+      setTimeout(() => {
+        timingButton?.classList.remove("timing-button-green");
+        timingButton?.classList.add("timing-button-red");
+
+        enemyRightVw = Math.max(2, enemyRightVw + 3);
+        updateEnemyPosition();
+
+        score = Math.max(0, score - 1);
+        if (scoreDisplay) scoreDisplay.textContent = score;
+      }, 750);
+    }
+  }, 1000);
+
+  timingButton?.addEventListener("click", () => {
+    if (timingButton?.classList.contains("timing-button-green") && enemyImage) {
       timingButton.classList.remove("timing-button-green");
       timingButton.classList.add("timing-button-red");
 
-      enemyRightVw = Math.max(2, enemyRightVw + 3);
+      enemyRightVw = Math.max(2, enemyRightVw - 3);
+      updateEnemyPosition();
+
+      score += 1;
+      if (scoreDisplay) scoreDisplay.textContent = score;
+    } else {
+      enemyRightVw += 3;
       updateEnemyPosition();
 
       score = Math.max(0, score - 1);
-      scoreDisplay.textContent = score;
-    }, 750);
-  }
-}, 1000);
-
-timingButton.addEventListener("click", () => {
-  if (timingButton.classList.contains("timing-button-green") && enemyImage) {
-    timingButton.classList.remove("timing-button-green");
-    timingButton.classList.add("timing-button-red");
-
-    enemyRightVw = Math.max(2, enemyRightVw - 3);
-    updateEnemyPosition();
-
-    score += 1;
-    scoreDisplay.textContent = score;
-  } else {
-    enemyRightVw += 3;
-    updateEnemyPosition();
-
-    score = Math.max(0, score - 1);
-    scoreDisplay.textContent = score;
-  }
-})});
+      if (scoreDisplay) scoreDisplay.textContent = score;
+  }})});
