@@ -16,7 +16,7 @@ const pages = {
   youdied: 'you-died',
 };
 
-const menuButtons = ['play', 'customize', 'credits', 'exitgame'];
+const menuButtons = ['play', 'customize', 'credits', 'exitgame', 'playagain'];
 const alignment = ['back']
 function showPage(pageId) {
   Object.values(pages).forEach(id => {
@@ -93,7 +93,7 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
           el?.classList.remove('center');
           el?.classList.remove('middle');
         
-          if (buttonId === 'play') {
+          if (buttonId === 'play' || buttonId === 'playagain') {
             // change title        
             document.getElementById("main-title").innerHTML = "play";
             // change background
@@ -166,9 +166,14 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
     enemyImage.style.right = `${enemyRightVw}vw`;
 
     if (enemyRightVw > 75) {
-      document.getElementById("you-died").innerHTML = "You died!";
+      document.getElementById("main-title").innerHTML = "You died!";
       const background = document.getElementById("background");
+      background?.classList.remove("background-play");
       background?.classList.add("background-died");
+      document.getElementById("play-menu").classList.add("hide");
+      document.getElementById("you-died").classList.remove("hide");
+      el?.classList.remove('top');
+      el?.classList.add('menu');
       gameStarted = false;
       clearInterval(gameInterval);
       gameInterval = undefined;
