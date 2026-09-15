@@ -50,7 +50,7 @@ body{
   padding: 0;
   width: 100%;
   overflow-Y: hidden;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   height: 100vh;
 }
 .background-customize {
@@ -104,7 +104,6 @@ body{
   width: 15vw;
   height: 4.3vw;
   text-shadow: 0 0 5px rgb(175, 175, 175);
-  position: relative;
 }
 /*play menu*/
 .play-image {
@@ -120,7 +119,7 @@ body{
   display: block;
   max-width: 100%;
   height: 25vh;
-  bottom: 7vh;
+  bottom: 3.8%;
   right: 3vw;
 }
 #timing-button{
@@ -256,6 +255,20 @@ body{
 .timing-button-green{
   background-color: green;
 }
+#you-died {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10vw;
+}
+.buttons{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: auto;
+}
 .background-died {
   background: linear-gradient(to right, #363636, #555555, #363636);
   margin: 0;
@@ -270,7 +283,7 @@ body{
 top: 60%;
 left: 50%;
 }
-.menu {
+#menu {
 top: 70%; 
 left: 50%;
 }
@@ -278,30 +291,54 @@ left: 50%;
   position: absolute;
   top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -100%);
   font-size: 10vw;
   color: rgb(255, 0, 0);
   text-shadow: 0 0 10px rgb(192, 0, 0);
 }
-#wasted-buttons{
+.wasted-buttons{
   display: flex;
   flex-direction: column;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: auto;
-  top: 60%;
- left: 50%;
- 
+  transform: translate(0, 100%);
+  width: 15vw;
+  align-items: center;
+  padding: 0.8vw;
+  color: rgb(255, 0, 0);
+  text-shadow: 0 0 0 rgb(192, 0, 0);
+  border: 0.2vw solid rgb(255, 0, 0);
 }
-#wasted-buttons ul {
+.buttons ul {
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
   padding: 0;
 }
-#wasted-buttons li {
+.buttons li {
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
 }
-#wasted-buttons a {
+.buttons a {
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   height: auto;
   display: block;
+}
+#final-scoreboard {
+  top: 12vw;
+  left: 18%;
+  display: flex;
+  position: absolute;
+  font-size: 2vw;
+  width: 20vw;
+  color: white;
+  text-shadow: 0 0 5px rgb(175, 175, 175);
+}
+#finalScore {
+  font-size: 2vw;
+  width: auto;
+  color: white;
+  text-shadow: 0 0 5px rgb(175, 175, 175);
+  margin: 0 0 0 1vw;
 }

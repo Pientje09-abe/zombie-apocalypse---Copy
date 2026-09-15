@@ -25,3 +25,36 @@ left: 50%;
   color: rgb(255, 0, 0);
   text-shadow: 0 0 10px rgb(192, 0, 0);
 }
+.wasted-buttons{
+  display: flex;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+  width: auto;
+  align-items: center;
+  padding: 14px;
+}
+#buttons ul {
+  list-style-type: none;
+  padding: 0;
+}
+#buttons li {
+  list-style-type: none;
+}
+#buttons a {
+  text-decoration: none;
+  height: auto;
+  display: block;
+}
+.menubuttons {
+  background-color: transparent;
+  color: white;
+  border: 0.2vw solid white;
+  margin: 10px;
+  font-size: 2vw;
+  cursor: pointer;
+  border-radius: 1em;
+  align-items: center;
+  width: 15vw;
+  height: 4.3vw;
+  text-shadow: 0 0 5px rgb(175, 175, 175);
+}

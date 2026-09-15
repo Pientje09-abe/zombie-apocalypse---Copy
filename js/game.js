@@ -1,10 +1,10 @@
-//prevent drawing and selecting text on the page
-document.addEventListener('selectstart', function (e) {
-  e.preventDefault();
+// Prevent drawing and selecting text on the page.
+document.addEventListener('selectstart', (event) => {
+  event.preventDefault();
 });
 
-document.addEventListener('dragstart', function (e) {
-  e.preventDefault();
+document.addEventListener('dragstart', (event) => {
+  event.preventDefault();
 });
 
 const pages = {
@@ -16,149 +16,151 @@ const pages = {
   youdied: 'you-died',
 };
 
-const menuButtons = ['play', 'customize', 'credits', 'exitgame', 'playagain'];
-const alignment = ['back']
+const menuButtons = ['play', 'customize', 'credits', 'exitgame'];
+const mainTitle = document.getElementById('main-title');
+const background = document.getElementById('background');
+const finalScore = document.getElementById('finalScore');
+let gameStarted = false;
+let gameInterval;
+
+function stopGame() {
+  gameStarted = false;
+  clearInterval(gameInterval);
+  gameInterval = undefined;
+}
+
+function setTitle(value) {
+  if (mainTitle) {
+    mainTitle.textContent = value;
+  }
+}
+
+function setBackground(name) {
+  background?.classList.remove(
+    'background-home',
+    'background-play',
+    'background-credits',
+    'background-customize',
+    'background-died'
+  );
+
+  if (name) {
+    background?.classList.add(`background-${name}`);
+  }
+}
+
+function setButtonLayout(layout) {
+  const buttons = document.getElementById('buttons');
+  buttons?.classList.remove('top', 'middle', 'center');
+  buttons?.classList.add(layout);
+}
+
 function showPage(pageId) {
-  Object.values(pages).forEach(id => {
+  Object.values(pages).forEach((id) => {
     document.getElementById(id)?.classList.add('hide');
   });
 
   document.getElementById(pageId)?.classList.remove('hide');
 }
 
-Object.entries(pages).forEach(([buttonId, pageId]) => {
-  document.getElementById(buttonId)?.addEventListener('click', () => {
-
-    showPage(pageId);
-
-    if (buttonId === 'back') {
-      // hide back button
+function bindMenuButtons() {
+  const menuActions = {
+    back: () => {
+      stopGame();
+      showPage('back');
       document.getElementById('back')?.classList.add('hide');
-
-      // show menu buttons
-      menuButtons.forEach(id => {
+      menuButtons.forEach((id) => {
         document.getElementById(id)?.classList.remove('hide');
       });
-      // align buttons
-      alignment.forEach(id => {
-        const el = document.getElementById('buttons');
-        el?.classList.remove('top');
-        el?.classList.remove('middle');
-        el?.classList.add('center');
-        // change title        
-        document.getElementById("main-title").innerHTML = "home";
-        // change background
-        const background = document.getElementById('background');
-        background?.classList.remove('background-died');
-        background?.classList.remove('background-play');
-        background?.classList.remove('background-credits');
-        background?.classList.remove('background-customize');
-        background?.classList.add('background-home');
+      setButtonLayout('center');
+      setTitle('home');
+      setBackground('home');
+    },
+    play: () => {
+      showPage('play-menu');
+      document.getElementById('back')?.classList.remove('hide');
+      menuButtons.forEach((id) => {
+        document.getElementById(id)?.classList.add('hide');
       });
-    } else {
-      if (buttonId === 'credits') {
-        // hide buttons
-        menuButtons.forEach(id => {
-          document.getElementById(id)?.classList.add('hide');
-        });
+      setButtonLayout('top');
+      setTitle('play');
+      setBackground('play');
+    },
+    customize: () => {
+      showPage('customize-menu');
+      document.getElementById('back')?.classList.remove('hide');
+      menuButtons.forEach((id) => {
+        document.getElementById(id)?.classList.add('hide');
+      });
+      setButtonLayout('top');
+      setTitle('Customize your character!');
+      setBackground('customize');
+    },
+    credits: () => {
+      showPage('credits-menu');
+      document.getElementById('back')?.classList.remove('hide');
+      menuButtons.forEach((id) => {
+        document.getElementById(id)?.classList.add('hide');
+      });
+      setButtonLayout('middle');
+      setTitle('credits');
+      setBackground('credits');
+    },
+  };
 
-        // show back button
-        document.getElementById('back')?.classList.remove('hide');
-
-        // align buttons
-        alignment.forEach(id => {
-          const el = document.getElementById('buttons');
-          el?.classList.remove('center');
-          el?.classList.add('middle');
-          // change title        
-          document.getElementById("main-title").innerHTML = "credits";
-          // change background
-          const background = document.getElementById('background');
-          background?.classList.remove('background-home');
-          background?.classList.add('background-credits');
-        });
-      } else {
-        // play page
-        // show back button
-        document.getElementById('back')?.classList.remove('hide');
-
-        // hide menu buttons
-        menuButtons.forEach(id => {
-          document.getElementById(id)?.classList.add('hide');
-        });
-        // align buttons
-        alignment.forEach(id => {
-          const el = document.getElementById('buttons');
-          el?.classList.add('top');
-          el?.classList.remove('center');
-          el?.classList.remove('middle');
-        
-          if (buttonId === 'play' || buttonId === 'playagain') {
-            // change title        
-            document.getElementById("main-title").innerHTML = "play";
-            // change background
-            const background = document.getElementById('background');
-            background?.classList.remove('background-home');
-            background?.classList.add('background-play');
-          }
-          else {
-            if (buttonId === 'customize') {
-              // change title        
-              document.getElementById("main-title").innerHTML = "Customize your character!";
-              // change background
-              const background = document.getElementById('background');
-              background?.classList.remove('background-home');
-              background?.classList.add('background-customize');
-            }
-        }});
-      }
-    }
+  Object.entries(menuActions).forEach(([buttonId, handler]) => {
+    document.getElementById(buttonId)?.addEventListener('click', handler);
   });
-});
+}
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const result = document.getElementById("result");
-      const buttons = document.querySelectorAll(".optionbutton");
-      const playImages = document.querySelectorAll(".play-image");
-      const savedCharacter = localStorage.getItem("character");
+bindMenuButtons();
 
-    if (savedCharacter) {
-        updateCharacter(savedCharacter);
+document.addEventListener('DOMContentLoaded', () => {
+  const result = document.getElementById('result');
+  const buttons = document.querySelectorAll('.optionbutton');
+  const playImages = document.querySelectorAll('.play-image');
+  const timingButton = document.getElementById('timing-button');
+  const playButton = document.getElementById('play');
+  const enemyImage = document.getElementById('enemy-image');
+  const scoreDisplay = document.getElementById('Score');
+  const deathScreen = document.getElementById('you-died');
+  const playMenu = document.getElementById('play-menu');
+  const savedCharacter = localStorage.getItem('character');
+
+  function updateCharacter(character) {
+    localStorage.setItem('character', character);
+
+    if (result) {
+      result.textContent = character;
     }
 
-    buttons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            const character = this.dataset.character;
-
-            if (!character) {
-                return;
-            }
-
-            updateCharacter(character);
-        });
+    playImages.forEach((image) => {
+      const isSelected = image.dataset.character === character;
+      image.classList.toggle('hide', !isSelected);
     });
+  }
 
-    function updateCharacter(character) {
-        localStorage.setItem("character", character);
-
-        if (result) {
-            result.textContent = character;
-        }
-
-        playImages.forEach(function (image) {
-            const isSelected = image.dataset.character === character;
-            image.classList.toggle("hide", !isSelected);
-        });
+  function resetCharacterSelection() {
+    if (savedCharacter) {
+      updateCharacter(savedCharacter);
     }
-  const timingButton = document.getElementById("timing-button");
-  const playButton = document.getElementById("play");
-  const enemyImage = document.getElementById("enemy-image");
-  const scoreDisplay = document.getElementById("Score");
-  let difficulty = localStorage.getItem("difficulty") || "easy";
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const character = button.dataset.character;
+
+      if (character) {
+        updateCharacter(character);
+      }
+    });
+  });
+
+  resetCharacterSelection();
+
+  let difficulty = localStorage.getItem('difficulty') || 'easy';
   let score = 0;
   let enemyRightVw = 2;
-  let gameStarted = false;
-  let gameInterval;
 
   function updateEnemyPosition() {
     if (!enemyImage) return;
@@ -166,76 +168,124 @@ Object.entries(pages).forEach(([buttonId, pageId]) => {
     enemyImage.style.right = `${enemyRightVw}vw`;
 
     if (enemyRightVw > 75) {
-      document.getElementById("main-title").innerHTML = "You died!";
-      const background = document.getElementById("background");
-      background?.classList.remove("background-play");
-      background?.classList.add("background-died");
-      document.getElementById("play-menu").classList.add("hide");
-      document.getElementById("you-died").classList.remove("hide");
-      el?.classList.remove('top');
-      el?.classList.add('menu');
-      gameStarted = false;
-      clearInterval(gameInterval);
-      gameInterval = undefined;
+      console.log('Game Over');
+      console.log('Final Score: ' + score);
+
+      if (finalScore) {
+        finalScore.textContent = String(score);
+      }
+
+      setTitle('You died!');
+      setBackground('died');
+      playMenu?.classList.add('hide');
+      deathScreen?.classList.remove('hide');
+      document.getElementById('back')?.classList.add('hide');
+
+      stopGame();
     }
   }
-
   function startGame() {
     if (gameStarted) return;
 
     gameStarted = true;
 
-    if (difficulty === "easy") {
-      gameInterval = setInterval(() => {
-        if (!gameStarted) return;
-
-        const x = Math.floor(Math.random() * 4) + 1;
-
-        if (x >= 4) {
-          timingButton?.classList.remove("timing-button-red");
-          timingButton?.classList.add("timing-button-orange");
-
-          setTimeout(function () {
-            if (!gameStarted) return;
-
-            timingButton?.classList.remove("timing-button-orange");
-            timingButton?.classList.add("timing-button-green");
-          }, 400);
-
-          setTimeout(function () {
-            if (gameStarted && timingButton?.classList.contains("timing-button-green")) {
-              timingButton?.classList.remove("timing-button-green");
-              timingButton?.classList.add("timing-button-red");
-              enemyRightVw = Math.max(2, enemyRightVw + 3);
-              updateEnemyPosition();
-            }
-          }, 700);
-        }
-      }, 1000);
-
-      timingButton?.addEventListener("click", () => {
-        if (!gameStarted) return;
-
-        if (timingButton?.classList.contains("timing-button-green") && enemyImage) {
-          timingButton.classList.remove("timing-button-green");
-          timingButton.classList.add("timing-button-red");
-
-          enemyRightVw = Math.max(2, enemyRightVw - 3);
-          updateEnemyPosition();
-
-          score += 1;
-          if (scoreDisplay) scoreDisplay.textContent = score;
-        } else {
-          enemyRightVw += 3;
-          updateEnemyPosition();
-        }
-      });
+    if (difficulty !== 'easy') {
+      return;
     }
+
+    gameInterval = setInterval(() => {
+      if (!gameStarted) return;
+
+      const randomNumber = Math.random() * 4;
+
+      if (randomNumber >= 3) {
+        timingButton?.classList.remove('timing-button-red');
+        timingButton?.classList.add('timing-button-orange');
+
+        setTimeout(() => {
+          if (!gameStarted) return;
+
+          timingButton?.classList.remove('timing-button-orange');
+          timingButton?.classList.add('timing-button-green');
+        }, 400);
+
+        setTimeout(() => {
+          if (!gameStarted) return;
+
+          if (timingButton?.classList.contains('timing-button-green')) {
+            timingButton?.classList.remove('timing-button-green');
+            timingButton?.classList.add('timing-button-red');
+            enemyRightVw = Math.max(2, enemyRightVw + 3);
+            updateEnemyPosition();
+          }
+        }, 700);
+      }
+    }, 1000);
   }
 
-  playButton?.addEventListener("click", () => {
+  function resetGame() {
     enemyRightVw = 2;
+    score = 0;
+
+    if (scoreDisplay) {
+      scoreDisplay.textContent = String(score);
+    }
+
+    if (enemyImage) {
+      enemyImage.style.right = '2vw';
+    }
+
+    deathScreen?.classList.add('hide');
+    playMenu?.classList.remove('hide');
+    document.getElementById('back')?.classList.remove('hide');
+
+    setTitle('play');
+    setBackground('play');
     updateEnemyPosition();
     startGame();
+  }
+
+  timingButton?.addEventListener('click', () => {
+    if (!gameStarted) return;
+
+    if (timingButton?.classList.contains('timing-button-green') && enemyImage) {
+      timingButton.classList.remove('timing-button-green');
+      timingButton.classList.add('timing-button-red');
+      enemyRightVw = Math.max(2, enemyRightVw - 3);
+      updateEnemyPosition();
+      score += 1;
+
+      if (scoreDisplay) {
+        scoreDisplay.textContent = String(score);
+      }
+      return;
+    }
+
+    enemyRightVw += 3;
+    updateEnemyPosition();
+  });
+
+  playButton?.addEventListener('click', () => {
+    resetGame();
+  });
+
+  document.getElementById('play-again')?.addEventListener('click', () => {
+    resetGame();
+  });
+
+  document.getElementById('menu')?.addEventListener('click', () => {
+    stopGame();
+
+    deathScreen?.classList.add('hide');
+    playMenu?.classList.add('hide');
+
+    menuButtons.forEach((id) => {
+      document.getElementById(id)?.classList.remove('hide');
+    });
+
+    document.getElementById('back')?.classList.add('hide');
+    setButtonLayout('center');
+    setTitle('home');
+    setBackground('home');
   });
 });
