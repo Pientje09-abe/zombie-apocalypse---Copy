@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let difficulty = localStorage.getItem('difficulty') || 'easy';
   let score = 0;
   let enemyRightVw = 2;
+  let lastTimingEvent = 0;
 
   function updateEnemyPosition() {
     if (!enemyImage) return;
@@ -188,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (gameStarted) return;
 
     gameStarted = true;
+    lastTimingEvent = Date.now();
 
     if (difficulty !== 'easy') {
       return;
@@ -196,9 +198,11 @@ document.addEventListener('DOMContentLoaded', () => {
     gameInterval = setInterval(() => {
       if (!gameStarted) return;
 
-      const randomNumber = Math.random() * 4;
+      const randomNumber = Math.random();
+      const eventIsDue = Date.now() - lastTimingEvent >= 6000;
 
-      if (randomNumber >= 3) {
+      if (randomNumber < 0.25 || eventIsDue) {
+        lastTimingEvent = Date.now();
         timingButton?.classList.remove('timing-button-red');
         timingButton?.classList.add('timing-button-orange');
 
@@ -207,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           timingButton?.classList.remove('timing-button-orange');
           timingButton?.classList.add('timing-button-green');
-        }, 400);
+        }, 300);
 
         setTimeout(() => {
           if (!gameStarted) return;
