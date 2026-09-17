@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!gameStarted) return;
 
       const randomNumber = Math.random();
-      const eventIsDue = Date.now() - lastTimingEvent >= 6000;
+      const eventIsDue = Date.now() - lastTimingEvent >= 5000;
 
       if (randomNumber < 0.25 || eventIsDue) {
         lastTimingEvent = Date.now();
@@ -259,6 +259,23 @@ document.addEventListener('DOMContentLoaded', () => {
       updateEnemyPosition();
       score += 1;
 
+      const selectedImage = [...playImages].find(
+        (image) => !image.classList.contains('hide')
+      );
+
+      if (selectedImage) {
+        const idleSource = selectedImage.src;
+        const hitSource = idleSource.replace('_idle_loop.gif', '_hit_no_loop.gif');
+
+        if (hitSource !== idleSource) {
+          selectedImage.src = hitSource;
+
+          setTimeout(() => {
+            selectedImage.src = idleSource;
+          }, 1000);
+        }
+      }
+
       if (scoreDisplay) {
         scoreDisplay.textContent = String(score);
       }
@@ -293,3 +310,4 @@ document.addEventListener('DOMContentLoaded', () => {
     setBackground('home');
   });
 });
+document.getElementById('hps').innerHTML = "hps: " + houtPerSeconde;
