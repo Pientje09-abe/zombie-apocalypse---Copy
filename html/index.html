@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../css/index.css">
 </head>
 
-<body id="background" class="background-home" class="background-died">
+<body id="background" class="background-home">
   <div id="buttons" class="center">
     <ul>
       <li><a href="#home"><button id="back" class="menubuttons hide">back</button></a></li>
@@ -20,10 +20,10 @@
   <div class="play-menu hide" id="play-menu">
     <h1 class="title hide">Play Menu</h1>
     <div>
-      <img class="play-image" data-character="red-mario" src="../images/mario_character_idle_blue_red_loop.gif" alt="Play Image">
-      <img class="play-image hide" data-character="green-mario" src="../images/mario_character_idle_groen_geel_loop.gif" alt="Play Image">
-      <img class="play-image hide" data-character="purple-mario" src="../images/mario_character_idle_paars_roze_loop.gif" alt="Play Image">
-      <img class="play-image hide" data-character="green-trooper" src="../images/Idle_trooper_east.gif" alt="Play Image">
+      <img class="play-image" data-character="Mario" src="../images/mario_character_idle_blue_red_loop.gif" alt="Play Image">
+      <img class="play-image hide" data-character="Green-Mario" src="../images/mario_character_idle_groen_geel_loop.gif" alt="Play Image">
+      <img class="play-image hide" data-character="Purple-Mario" src="../images/mario_character_idle_paars_roze_loop.gif" alt="Play Image">
+      <img class="play-image hide" data-character="Luigi" src="../images/mario_character_hit_blue_green_no_loop.gif" alt="Play Image">
     </div>
     <div class="timing-buttons">
       <button id="timing-button" class="timing-button-red"></button>
@@ -37,10 +37,10 @@
   <div class="customize-menu hide" id="customize-menu">
   <h1 class="title"></h1>
   <ul id="character-options">
-    <li><button class="optionbutton options" data-character="red-mario"><img class="character-image1" src="../images/mario_character_idle_blue_red_loop.gif" alt="red mario">red mario</button></li>
-    <li><button class="optionbutton options" data-character="green-mario"><img class="character-image2" src="../images/mario_character_idle_groen_geel_loop.gif" alt="green mario">green mario</button></li>
-    <li><button class="optionbutton options" data-character="purple-mario"><img class="character-image3" src="../images/mario_character_idle_paars_roze_loop.gif" alt="purple mario">purple mario</button></li>
-    <li><button class="optionbutton options" data-character="green-trooper"><img class="character-image4" src="../images/Idle_trooper_east.gif" alt="green trooper">green trooper</button></li>
+    <li><button class="optionbutton options" data-character="Mario"><img class="character-image1" src="../images/mario_character_idle_blue_red_loop.gif" alt="Mario">Mario</button></li>
+    <li><button class="optionbutton options" data-character="Green-Mario"><img class="character-image2" src="../images/mario_character_idle_groen_geel_loop.gif" alt="Green Mario">Green Mario</button></li>
+    <li><button class="optionbutton options" data-character="Purple-Mario"><img class="character-image3" src="../images/mario_character_idle_paars_roze_loop.gif" alt="Purple Mario">Purple Mario</button></li>
+    <li><button class="optionbutton options" data-character="Luigi"><img class="character-image4" src="../images/mario_character_idle_blue_green_loop.gif" alt="Luigi">Luigi</button></li>
   </ul>
   <p id="result">None selected</p>
   </div>
@@ -49,17 +49,15 @@
     <h2 class="text"><br>Pientje09<br><br>Rubyfire</h2>
   </div>
   <div id="you-died" class="hide">
-    <h1 class="title">Game Over</h1>
-    <p id="final-score"></p>
-    <button id="restart-button">Restart</button>
-  </div>
-  <script src="../js/game.js"></script>
-  <div id="buttons">
+  <div class="buttons">
     <ul>
-      <li><a href="#play-again"><button class="buttons" id="play-again">Play again</button></a></li>
-      <li><a href="#menu"><button class="buttons" id="menu">Menu</button></a></li>
       <div class="you-died">WASTED</div>
+      <div id="final-scoreboard">final score: <p id="finalScore">0</p></div>
+      <li><a href="#play-again"><button class="wasted-buttons menubuttons" id="play-again">Play again</button></a></li>
+      <li><a href="#menu"><button class="wasted-buttons menubuttons" id="menu">Menu</button></a></li>
     </ul>
   </div>
+</div>
+  <script src="../js/game.js"></script>
 </body>
 </html>
